@@ -16,7 +16,7 @@
                 </div>
               @endif
               <div class="form-group{{ $errors->has('identity') ? ' has-error' : '' }}">
-                <label for="identity" class="col-md-4 control-label">Email or Username</label>
+                <label for="identity" class="col-md-4 control-label">Usuário</label>
 
                 <div class="col-md-6">
                   <input id="identity" type="identity" class="form-control" name="identity"
@@ -31,7 +31,7 @@
               </div>
 
               <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                <label for="password" class="col-md-4 control-label">Password</label>
+                <label for="password" class="col-md-4 control-label">Senha</label>
 
                 <div class="col-md-6">
                   <input id="password" type="password" class="form-control" name="password">
@@ -59,10 +59,6 @@
                   <button type="submit" class="btn btn-primary">
                     Login
                   </button>
-
-                  <a class="btn btn-link" href="{{ route('password.request') }}">
-                    Forgot Your Password?
-                  </a>
                 </div>
               </div>
             </form>
