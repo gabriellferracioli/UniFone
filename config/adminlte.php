@@ -45,7 +45,7 @@ return [
     |
     */
 
-    'skin' => 'red',
+    'skin' => 'black',
 
     /*
     |--------------------------------------------------------------------------
@@ -110,18 +110,13 @@ return [
     'menu' => [
         'MAIN NAVIGATION',
         [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
             'text' => 'Ligações',
-            'url'  => '/home',
+            'url'  => 'admin/settings',
             'icon' => 'fas fa-phone',
         ],
         [
             'text' => 'Clientes',
-            'url'  => 'admin/settings',
+            'url'  => 'clientes',
             'icon' => 'fas fa-users',
         ],
         [

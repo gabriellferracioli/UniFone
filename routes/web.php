@@ -15,23 +15,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Auth::routes();
-
+$this->group(['middleware' => 'auth'], function(){
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/cliente', 'ClienteController@index')->name('cliente');
+Route::get('clientes', 'ClienteController@index')->name('clientes');
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+});

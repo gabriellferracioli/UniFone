@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="col-md-5">
+    <div class="col-md-4">
         <div class="box">
             <div class="box-header">
               <h3 class="box-title">Ultimas Chamadas</h3>
@@ -38,9 +38,6 @@
               </tbody></table>
             </div>
         </div>
-
-    <div class="col-md-5">
-          </div>
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Clientes com mais ligações</h3>
@@ -72,5 +69,4 @@
             </div>
             <!-- /.box-body -->
           </div>
-    </div>
 @stop
