@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
-          <div class="panel-heading">Login</div>
+          <div class="panel-heading" id='login'>Login</div>
 
           <div class="panel-body">
             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -29,7 +29,6 @@
                   @endif
                 </div>
               </div>
-
               <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                 <label for="password" class="col-md-4 control-label">Senha</label>
 
@@ -38,12 +37,11 @@
 
                   @if ($errors->has('password'))
                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
                   @endif
                 </div>
               </div>
-
               <div class="form-group">
                 <div class="col-md-6 col-md-offset-4">
                   <div class="checkbox">

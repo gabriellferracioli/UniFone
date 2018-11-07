@@ -36,7 +36,7 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest')->except('auth.login');
     }
      
     /**
@@ -64,8 +64,8 @@ class LoginController extends Controller
                 'password' => 'required|string',
             ],
             [
-                'identity.required' => 'Username or email is required',
-                'password.required' => 'Password is required',
+                'identity.required' => 'Usuário invalido',
+                'password.required' => 'Senha invalida',
             ]
             );
     }
@@ -74,5 +74,7 @@ class LoginController extends Controller
      * @throws ValidationException
      */
     protected function sendFailedLoginResponse(Request $request)
-    {}
+    {
+        return view('auth.login');
+    }
 }
