@@ -17,8 +17,9 @@ Route::get('/', function () {
 
 $this->group(['middleware' => 'auth'], function(){
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('clientes', 'ClienteController@index')->name('clientes');
-
+Route::get('/clientes', 'ClienteController@index')->name('menuclientes');
+Route::get('/ligacoes', 'LigacoesController@index')->name('menuligacoes');
+Route::get('/usuarios', 'UsuariosController@index')->name('menuusuarios');
 });
 Auth::routes();
 

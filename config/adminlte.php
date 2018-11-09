@@ -111,7 +111,7 @@ return [
         'MAIN NAVIGATION',
         [
             'text' => 'Ligações',
-            'url'  => 'admin/settings',
+            'url'  => 'menuligacoes',
             'icon' => 'fas fa-phone',
         ],
         [
@@ -121,18 +121,18 @@ return [
         ],
         [
             'text' => 'Relatórios',
-            'url'  => 'admin/settings',
+            'url'  => 'relatorios',
             'icon' => 'fa-file-text',
         ],
         [
             'text' => 'Usuários',
-            'url'  => 'admin/settings',
+            'url'  => 'usuarios',
             'icon' => 'fas fa-users',
         ],
         'ACCOUNT SETTINGS',
         [
-            'text' => 'Profile',
-            'url'  => 'admin/settings',
+            'text' => 'Perfil',
+            'url'  => 'perfil',
             'icon' => 'user',
         ],
     ],

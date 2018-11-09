@@ -1,11 +1,20 @@
-@extends('layouts.app')
+@extends('adminlte::master')
 
-@section('content')
-  <div class="container">
+@section('adminlte_css')
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/plugins/iCheck/square/blue.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/adminlte/css/auth.css') }}">
+    @yield('css')
+@stop
+
+@section('body_class', 'login-page')
+
+@section('body')
+
+<div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
-          <div class="panel-heading" id='login'>Login</div>
+          <div class="panel-heading">Login</div>
 
           <div class="panel-body">
             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
@@ -43,16 +52,6 @@
                 </div>
               </div>
               <div class="form-group">
-                <div class="col-md-6 col-md-offset-4">
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              <div class="form-group">
                 <div class="col-md-8 col-md-offset-4">
                   <button type="submit" class="btn btn-primary">
                     Login
@@ -65,4 +64,18 @@
       </div>
     </div>
   </div>
-@endsection
+@stop
+
+@section('adminlte_js')
+    <script src="{{ asset('vendor/adminlte/plugins/iCheck/icheck.min.js') }}"></script>
+    <script>
+        $(function () {
+            $('input').iCheck({
+                checkboxClass: 'icheckbox_square-blue',
+                radioClass: 'iradio_square-blue',
+                increaseArea: '20%' // optional
+            });
+        });
+    </script>
+    @yield('js')
+@stop
