@@ -111,7 +111,7 @@ return [
         'MAIN NAVIGATION',
         [
             'text' => 'Ligações',
-            'url'  => 'menuligacoes',
+            'url'  => 'ligacoes',
             'icon' => 'fas fa-phone',
         ],
         [

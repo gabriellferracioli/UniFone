@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ligacoes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LigacoesController extends Controller
 {
@@ -14,7 +15,12 @@ class LigacoesController extends Controller
      */
     public function index()
     {
-        return view('menuligacoes');
+        $ligacoes = DB::table('ligacoes')
+                        -> join('clientes', 'ligacoes.id_cliente','=','clientes.id_cliente')
+                        ->select('ligacoes.id_cliente as nligacoes','ligacoes.id_cliente as cod','clientes.nome_cliente as cnome','ligacoes.assunto_ligacao as  assunto')
+                        ->orderBy('ligacoes.id_cliente','desc')
+                        ->get();
+        return view('menuligacao', compact('ligacoes'));
     }
 
     /**
@@ -81,5 +87,9 @@ class LigacoesController extends Controller
     public function destroy(ligacoes $ligacoes)
     {
         //
+    }
+    public function CadLigacao()
+    {
+        return view('cadligacao');
     }
 }

@@ -7,7 +7,7 @@
 @stop
 
 @section('content')
-    <div class="col-md-4">
+    <div class="col-md-6">
         <div class="box">
             <div class="box-header">
               <h3 class="box-title">Ultimas Chamadas</h3>
@@ -19,25 +19,18 @@
                   <th style="width: 10px">ADM</th>
                   <th style="width: 40px">Nome</th>
                 </tr>
+                @foreach($ultimasligacoes as $ultima)
                 <tr>
-                  <td>1.</td>
-                  <td>Update software</td>
+                  <td>{{$ultima->adm}}</td>
+                  <td>{{$ultima->cnome}}</td>
                 </tr>
                 <tr>
-                  <td>2.</td>
-                  <td>Clean database</td>
-                </tr>
-                <tr>
-                  <td>3.</td>
-                  <td>Cron job running</td>
-                </tr>
-                <tr>
-                  <td>4.</td>
-                  <td>Fix and squish bugs</td>
-                </tr>
+                @endforeach
               </tbody></table>
             </div>
         </div>
+        </div>
+        <div class="col-md-6">
           <div class="box">
             <div class="box-header">
               <h3 class="box-title">Clientes com mais ligações</h3>
@@ -49,24 +42,15 @@
                   <th style="width: 10px">ADM</th>
                   <th style="width: 40px">Nome</th>
                 </tr>
+                @foreach($clientesligacoes as $ligacoes)
                 <tr>
-                  <td>1.</td>
-                  <td>Update software</td>
+                  <td>{{$ligacoes->adm}}</td>
+                  <td>{{$ligacoes->cnome}}</td>
                 </tr>
-                <tr>
-                  <td>2.</td>
-                  <td>Clean database</td>
-                </tr>
-                <tr>
-                  <td>3.</td>
-                  <td>Cron job running</td>
-                </tr>
-                <tr>
-                  <td>4.</td>
-                  <td>Fix and squish bugs</td>
-                </tr>
+                @endforeach
               </tbody></table>
             </div>
             <!-- /.box-body -->
+          </div>
           </div>
 @stop
