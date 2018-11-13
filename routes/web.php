@@ -20,6 +20,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/clientes', 'ClienteController@index')->name('menuclientes');
 Route::get('/ligacoes', 'LigacoesController@index')->name('menuligacoes');
 Route::get('/cadligacoes', 'LigacoesController@cadLigacao')->name('cadligacao');
+Route::get('/inserirlig', 'LigacoesController@store')->name('inserirlig');
 Route::get('/usuarios', 'UsuariosController@index')->name('menuusuarios');
 });
 Auth::routes();

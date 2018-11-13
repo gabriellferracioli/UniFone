@@ -32,16 +32,14 @@
                <table id="example1" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example1_info">
                   <thead>
                      <tr role="row">
-                        <th class="sorting_asc" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" style="width: 182px;">Nº Ligações</th>
-                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" style="width: 224px;">ADM</th>
-                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Platform(s): activate to sort column ascending" style="width: 199px;">Cliente</th>
-                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" aria-label="Engine version: activate to sort column ascending" style="width: 268px;">Assunto</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 224px;">ADM</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 199px;">Cliente</th>
+                        <th class="sorting" tabindex="0" aria-controls="example1" rowspan="1" colspan="1" style="width: 450px;">Assunto</th>
                      </tr>
                   </thead>                  
                   <tbody>
                   @foreach($ligacoes as $ligacao)
                      <tr role="row" ">
-                        <td> {{$ligacao->nligacoes}}</td>
                         <td>{{$ligacao->cod}}</td>
                         <td>{{$ligacao->cnome}}</td>
                         <td>{{$ligacao->assunto}}</td>
