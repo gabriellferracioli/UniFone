@@ -23,10 +23,10 @@ select.basic {
               <div class="tab-pane active" id="settings">
                 <form class="form-horizontal" action="{{route('inserirlig')}}">
                   <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">ADM</label>
+                    <label for="inputADM" class="col-sm-2 control-label">ADM</label>
                     <div class='row'>
                         <div class="col-sm-2">
-                        <input name="ADM" type="nome" class="form-control" id="=" placeholder="" value="" maxlength='5' >        
+                        <input name="ADM" type="nome" class="form-control" id="inputADM" placeholder="" value="" maxlength='5' >        
                         </div>
                         <div>
                         <a id="btnADM" class="btn btn-success" >Buscar</a>

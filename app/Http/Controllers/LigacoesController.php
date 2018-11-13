@@ -109,8 +109,7 @@ class LigacoesController extends Controller
     }
     public function carregainfolig($id, Request $request)
     {   
-        //return Cliente::findOrFail($id);
-        dd($id);
+        return Cliente::findOrFail($id);
         return view('cadligacao');
         //Ligacoes::findOrFail($id);
     }
