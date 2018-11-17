@@ -13879,7 +13879,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(12);
-module.exports = __webpack_require__(43);
+module.exports = __webpack_require__(44);
 
 
 /***/ }),
@@ -13894,9 +13894,9 @@ module.exports = __webpack_require__(43);
  */
 
 __webpack_require__(13);
-__webpack_require__(48);
+__webpack_require__(36);
 
-window.Vue = __webpack_require__(36);
+window.Vue = __webpack_require__(37);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -13904,7 +13904,7 @@ window.Vue = __webpack_require__(36);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', __webpack_require__(39));
+Vue.component('example-component', __webpack_require__(40));
 
 var app = new Vue({
   el: '#app'
@@ -35952,6 +35952,101 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 36 */
+/***/ (function(module, exports) {
+
+$(document).ready(function () {
+    $('#btnADM').click(function () {
+        // console.log($('#inputADM').val());
+        if ($('#inputADM').val() != '') {
+            $.get("/api/carregainfocli/" + $('#inputADM').val(), function (data, status) {
+                $('#inputnome').val(data.Nome_Cliente);
+                $('#inputrazao').val(data.Razaosocial_Cliente);
+            });
+        }
+    });
+});
+if (window.location.href == "http://localhost:8000/ligacoes") {
+    $("tr").click(function () {
+        sessionStorage.clear();
+        var rowItems = $(this).children('td').map(function () {}).toArray();
+        var s = "" + this.innerHTML;
+        var idligacao;
+        var i;
+        for (i = 0; i < 5; i++) {
+            s = s.replace("<td>", '');
+            s = s.replace("</td>", ',');
+            s = s.replace("\n", "");
+        }
+        idligacao = s.substring(0, s.indexOf(","));
+        idligacao = idligacao.trim(idligacao);
+        $.get("/api/carregainfolig/" + idligacao, function (data, status) {
+            // console.log(data); 
+            sessionStorage.setItem("idligacao", idligacao);
+            sessionStorage.setItem("idCliente", data.Id_Cliente);
+            sessionStorage.setItem("Observacoes", data.Observacoes_Ligacao);
+            sessionStorage.setItem("Urgencia", data.Urgencia_Ligacao);
+            sessionStorage.setItem("Assunto", data.Assunto_Ligacao);
+            $.get("/api/carregainfocli/" + data.Id_Cliente, function (data, status) {
+                sessionStorage.setItem("Nome", data.Nome_Cliente);
+                sessionStorage.setItem("Razao", data.Razaosocial_Cliente);
+            });
+            window.location = "/altligacoes";
+        });
+    });
+}
+
+if (window.location.href == "http://localhost:8000/altligacoes") {
+    $('#idLigacao').val("" + sessionStorage.idligacao);
+    $('#inputADM').val("" + sessionStorage.idCliente);
+    $('#inputassunto').val("" + sessionStorage.Assunto);
+    $('#cbUrgencia').val("" + sessionStorage.Urgencia);
+    $('#inputObservacoes').val("" + sessionStorage.Observacoes);
+    $('#inputnome').val("" + sessionStorage.Nome);
+    $('#inputrazao').val("" + sessionStorage.Razao);
+}
+
+if (window.location.href == "http://localhost:8000/clientes") {
+    $("tr").click(function () {
+        sessionStorage.clear();
+        var rowItems = $(this).children('td').map(function () {}).toArray();
+        var s = "" + this.innerHTML;
+        var idligacao;
+        var i;
+        for (i = 0; i < 5; i++) {
+            s = s.replace("<td>", '');
+            s = s.replace("</td>", ',');
+            s = s.replace("\n", "");
+        }
+        idcliente = s.substring(0, s.indexOf(","));
+        idcliente = idcliente.trim(idcliente);
+        $.get("/api/carregainfocli/" + idcliente, function (data, status) {
+            // console.log(data.CNPJ_Cliente); 
+            sessionStorage.setItem("Id", idcliente);
+            sessionStorage.setItem("Nome", data.Nome_Cliente);
+            sessionStorage.setItem("Razao", data.Razaosocial_Cliente);
+            sessionStorage.setItem("Cnpj", data.CNPJ_Cliente);
+            sessionStorage.setItem("Estado", data.Estado_Cliente);
+            sessionStorage.setItem("Municipio", data.Municipio_Cliente);
+            sessionStorage.setItem("Telefone1", data.Telefone1_Cliente);
+            sessionStorage.setItem("Telefone2", data.Telefone2_Cliente);
+            window.location = "/altcliente";
+        });
+    });
+}
+
+if (window.location.href == "http://localhost:8000/altcliente") {
+    $('#idcliente').val("" + sessionStorage.Id);
+    $('#inputcnpj').val("" + sessionStorage.Cnpj);
+    $('#inputnome').val("" + sessionStorage.Nome);
+    $('#inputrazao').val("" + sessionStorage.Razao);
+    $('#inputmunicipio').val("" + sessionStorage.Municipio);
+    $('#cbestados').val("" + sessionStorage.Estado);
+    $('#inputtelefone1').val("" + sessionStorage.Telefone1);
+    $('#inputtelefone2').val("" + sessionStorage.Telefone2);
+}
+
+/***/ }),
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -46914,10 +47009,10 @@ Vue.compile = compileToFunctions;
 
 module.exports = Vue;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(37).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(38).setImmediate))
 
 /***/ }),
-/* 37 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var scope = (typeof global !== "undefined" && global) ||
@@ -46973,7 +47068,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(38);
+__webpack_require__(39);
 // On some exotic environments, it's not clear which object `setimmediate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -46987,7 +47082,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
-/* 38 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -47180,15 +47275,15 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(6)))
 
 /***/ }),
-/* 39 */
+/* 40 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-var normalizeComponent = __webpack_require__(40)
+var normalizeComponent = __webpack_require__(41)
 /* script */
-var __vue_script__ = __webpack_require__(41)
+var __vue_script__ = __webpack_require__(42)
 /* template */
-var __vue_template__ = __webpack_require__(42)
+var __vue_template__ = __webpack_require__(43)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -47227,7 +47322,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 40 */
+/* 41 */
 /***/ (function(module, exports) {
 
 /* globals __VUE_SSR_CONTEXT__ */
@@ -47336,7 +47431,7 @@ module.exports = function normalizeComponent (
 
 
 /***/ }),
-/* 41 */
+/* 42 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -47365,7 +47460,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 42 */
+/* 43 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -47408,34 +47503,10 @@ if (false) {
 }
 
 /***/ }),
-/* 43 */
+/* 44 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 44 */,
-/* 45 */,
-/* 46 */,
-/* 47 */,
-/* 48 */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-    $('#btnADM').click(function () {
-        console.log($('#inputADM').val());
-
-        $.get("/api/carregainfolig/" + $('#inputADM').val(), function (data, status) {
-            // alert("Data: " + data + "\nStatus: " + status);
-            // console.log(data.Nome_Cliente);
-
-            $('#inputnome').val(data.Nome_Cliente);
-            //    console.log(response.json());
-        });
-
-        // alert(inputADM);
-    });
-});
 
 /***/ })
 /******/ ]);

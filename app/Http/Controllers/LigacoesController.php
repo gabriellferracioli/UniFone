@@ -17,11 +17,13 @@ class LigacoesController extends Controller
     public function index()
     {
         $ligacoes = DB::table('ligacoes')
-                        -> join('clientes', 'ligacoes.id_cliente','=','clientes.id_cliente')
-                        ->select('ligacoes.id_cliente as nligacoes','ligacoes.id_cliente as cod','clientes.nome_cliente as cnome','ligacoes.assunto_ligacao as  assunto')
+                        ->join('clientes', 'ligacoes.id_cliente','=','clientes.id_cliente')
+                        ->select('ligacoes.id_ligacao as id','ligacoes.id_cliente as cod','clientes.nome_cliente as cnome','ligacoes.assunto_ligacao as  assunto')
+                        ->where('ligacoes.ativo_ligacao','1')
                         ->orderBy('ligacoes.id_ligacao','desc')
                         ->get();
-        return view('menuligacao', compact('ligacoes'));
+        
+        return view('menuligacao', compact('ligacoes'));   
     }
 
     /**
@@ -53,10 +55,10 @@ class LigacoesController extends Controller
             'observacoes_ligacao' => $request->observacoes,
             'iligacaomov_ligacao' => null,
             'ativo_ligacao' => 1,
-            'created_at' => null,
+            'created_at' => now(),
             'updated_at' => null,     
         ]);
-        return redirect()->route('menuligacoes')->with('message', 'Ligação cadastrada com sucesso!');
+        return redirect()->route('menuligacoes');
     }
 
     /**
@@ -90,27 +92,42 @@ class LigacoesController extends Controller
      */
     public function update(Request $request, ligacoes $ligacoes)
     {
-        //
+        // dd($request->idLigacao);
+        DB::table('ligacoes')
+            ->where('id_ligacao', $request->idLigacao)
+            ->update(['id_cliente' => $request->ADM,
+                      'assunto_ligacao' => $request->assunto,
+                      'urgencia_ligacao' => $request->Urgencia,
+                      'observacoes_ligacao' => $request->observacoes,
+                      'iligacaomov_ligacao' => null,
+                      'updated_at' => now(),]);
+        return redirect()->route('menuligacoes');
     }
-
     /**
      * Remove the specified resource from storage.
      *
      * @param  \App\ligacoes  $ligacoes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ligacoes $ligacoes)
+    public function destroy(Request $request, ligacoes $ligacoes)
     {
-        //
+        DB::table('ligacoes')
+        ->where('id_ligacao', $request->idLigacao)
+        ->update(['ativo_ligacao' => 0,
+                  'updated_at' => now(),]);
+        // return redirect()->route('menuligacoes');
     }
     public function CadLigacao()
     {
         return view('cadligacao');
     }
-    public function carregainfolig($id, Request $request)
-    {   
-        return Cliente::findOrFail($id);
-        return view('cadligacao');
-        //Ligacoes::findOrFail($id);
+    public function carregainfolig($id, Request $request){
+        return ligacoes::findOrFail($id);
+    }
+    public function carregainfocli($id, Request $request){
+        return cliente::findOrFail($id);
+    }
+    public function AltLigacao(){
+        return view('altligacao');
     }
 }
