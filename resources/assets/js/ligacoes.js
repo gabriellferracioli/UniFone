@@ -91,3 +91,43 @@ if (window.location.href == "http://localhost:8000/altcliente"){
     $('#inputtelefone1').val(""+sessionStorage.Telefone1);
     $('#inputtelefone2').val(""+sessionStorage.Telefone2);
 }
+
+
+
+if (window.location.href == "http://localhost:8000/usuarios"){
+$("tr").click(function () {
+    sessionStorage.clear();
+    var rowItems = $(this).children('td').map(function () {
+    }).toArray();
+    var s = "" + this.innerHTML;   
+    var idligacao;
+    var i;
+    for (i = 0; i < 5; i++) { 
+        s = s.replace("<td>",'');
+        s = s.replace("</td>",',');
+        s = s.replace("\n","");
+    }
+    idusuario = s.substring(0,s.indexOf(","));
+    idusuario = idusuario.trim(idusuario);
+    console.log('Oie');
+    $.get("/api/carregainfousu/"+idusuario, function(data, status){
+        sessionStorage.setItem("Id", idusuario);
+        sessionStorage.setItem("Nome", data.Nome_Usuario);
+        sessionStorage.setItem("Ramal", data.Ramal_Usuario);          
+        sessionStorage.setItem("Cargo", data.Cargo_Usuario);
+        sessionStorage.setItem("Usuario", data.Usuario_Usuario);
+        sessionStorage.setItem("Senha", data.password);
+        window.location="/altusuario"; 
+    });    
+});
+}
+
+
+if (window.location.href == "http://localhost:8000/altusuario"){
+    $('#idusuario').val(""+sessionStorage.Id);
+    $('#inputnome').val(""+sessionStorage.Nome);
+    $('#inputramal').val(""+sessionStorage.Ramal);
+    $('#cbcargo').val(""+sessionStorage.Cargo);
+    $('#inputusuario').val(""+sessionStorage.Usuario);
+    $('#inputsenha').val(""+sessionStorage.Senha);
+}

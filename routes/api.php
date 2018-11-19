@@ -19,3 +19,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('/carregainfocli/{id}','LigacoesController@carregainfocli')->name('carregainfocli');
 Route::get('/carregainfolig/{id}', 'LigacoesController@carregainfolig')->name('carregainfolig');
+Route::get('/carregainfousu/{id}', 'UsuariosController@carregainfousu')->name('carregainfousu');
