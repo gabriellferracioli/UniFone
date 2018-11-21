@@ -120,11 +120,6 @@ return [
             'icon' => 'fas fa-users',
         ],
         [
-            'text' => 'Relatórios',
-            'url'  => 'relatorios',
-            'icon' => 'fa-file-text',
-        ],
-        [
             'text' => 'Usuários',
             'url'  => 'usuarios',
             'icon' => 'fas fa-users',

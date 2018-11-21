@@ -35986,10 +35986,6 @@ if (window.location.href == "http://localhost:8000/ligacoes") {
             sessionStorage.setItem("Observacoes", data.Observacoes_Ligacao);
             sessionStorage.setItem("Urgencia", data.Urgencia_Ligacao);
             sessionStorage.setItem("Assunto", data.Assunto_Ligacao);
-            $.get("/api/carregainfocli/" + data.Id_Cliente, function (data, status) {
-                sessionStorage.setItem("Nome", data.Nome_Cliente);
-                sessionStorage.setItem("Razao", data.Razaosocial_Cliente);
-            });
             window.location = "/altligacoes";
         });
     });
@@ -36001,8 +35997,6 @@ if (window.location.href == "http://localhost:8000/altligacoes") {
     $('#inputassunto').val("" + sessionStorage.Assunto);
     $('#cbUrgencia').val("" + sessionStorage.Urgencia);
     $('#inputObservacoes').val("" + sessionStorage.Observacoes);
-    $('#inputnome').val("" + sessionStorage.Nome);
-    $('#inputrazao').val("" + sessionStorage.Razao);
 }
 
 if (window.location.href == "http://localhost:8000/clientes") {

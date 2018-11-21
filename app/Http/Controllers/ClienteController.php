@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\DB;
 
 class ClienteController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('nivelacesso:cliente');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -37,11 +42,12 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        $idcliente = DB::select('select id_cliente from clientes order by id_cliente desc limit 1');
-        $id = $idcliente[0]; 
+        // $idcliente = DB::select('select id_cliente from clientes order by id_cliente desc limit 1');
+        // $id = $idcliente[0]; 
         // dd($request->cnpj);
+        // intval($id->id_cliente)
         DB::table('clientes')->insert([
-            'id_cliente' => intval($id->id_cliente) + 1,
+            'id_cliente' =>  6,
             'CNPJ_cliente'=> $request->cnpj,
             'Nome_cliente'=> $request->nome,
             'Razaosocial_cliente' => $request->razaosocial,

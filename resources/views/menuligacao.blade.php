@@ -20,9 +20,6 @@
                <a href="{{route('cadligacao')}}"  class="btn btn-success" >Incluir</a>
                </div>
             </div>
-            <div class="col-sm-6">
-               <div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label></div>
-            </div>
          </div>
          <div class="row">
             <div class="col-sm-12">
