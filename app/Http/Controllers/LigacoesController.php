@@ -58,8 +58,8 @@ class LigacoesController extends Controller
             'created_at' => now(),
             'updated_at' => null,     
         ]);
-        // $ligacao = new LigacoesController();
-        // $ligacao->montaJson($request);
+        $ligacao = new LigacoesController();
+        $ligacao->montaJson($request);
         return redirect()->route('menuligacoes');
     }
 
@@ -133,59 +133,44 @@ class LigacoesController extends Controller
         return view('altligacao');
     }
     public function montaJson($infoligacao){
-        $ticket ='{
-            "type"=> 1,
-            "subject" => {{$infoligacao->assunto}},
-            "category" => "Suporte",
-            "urgency": {{$infoligacao->urgencia}},
-            "status": "Resolvido",
-            "origin": 9,
-            "createdDate": now(),
-            "originEmailAccount": "gabriel@uniware.com.br",
-            "owner": {
-            "id": "1607307413",
-            "personType": 1,
-            "profileType": 1,
-            "businessName": "Gabriel Lopes",
-            "email": "gabriel@uniware.com.br",
-            "phone": "(47) 99999-9999"
-            },
-             "createdBy": {
-            "id": "1607307413",
-            "personType": 1,
-            "profileType": 2,
-            "businessName": "Gabriel Lopes",
-            "email": "gabriel@uniware.com.br",
-            "phone": "(47) 99999-9999"
-            },
-            "clients": [
-            {
-            "id": "00006",
-            "personType": 2,
-            "profileType": 2,
-            "businessName": "00006 - UNIWARE INFORMÁTICA",
-            "email": "gabriel@uniware.com.br",
-            "phone": "(47) 99999-9999",
-            "isDeleted": false,
-            }
-            ],"actions": [
-            {
-            "id": 1,
-            "type": 2,
-            "origin": 9,
-            "description": $inforligacao->Assunto,
-            "createdDate": now()
-            }
-            ]
-            }';
-        $url = 'https://api.movidesk.com/public/v1/tickets';
-        $ch = curl_init();
+        date_default_timezone_set('America/Sao_Paulo');
+        $ticket =array(
+            'type' => '1',
+         'subject' => $infoligacao->assunto,
+        'category' => 'Suporte',
+         'urgency' => $infoligacao->urgencia,
+          'status' => 'Resolvido',
+          'origin' => '9',
+     'createdDate' => substr(now(),0),
+           'owner' => array(
+                     'id' => '1607307413'
+           ),
+       'ownerTeam' => 'Desenvolvimento',
+       'createdBy' => array(
+                     'id' => '1607307413'
+           ), 
+         'Clients' => array(
+                     'id' => '00006',
+             'personType' => '2',
+            'profileType' => '2'
+           ),
+         'Actions' => array(
+                   'type' => '1' ,
+            'description' => $infoligacao->observacoes
+           ),
+        );
+        $ticketjson = json_encode($ticket);
+        // dd($ticketjson);
 
-        curl_setopt($ch, CURLOPT_URL, $url);
+        $url = 'https://api.movidesk.com/public/v1/tickets?token=ebd6e959-a91e-4d65-88fe-bdea14a87eca';
+        
+        $ch = curl_init($url);
+
+        // curl_setopt($ch, CURLOPT_URL, $url);
         
         curl_setopt($ch, CURLOPT_POST, 1);
         
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $ticket);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $ticketjson);
         
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
         
