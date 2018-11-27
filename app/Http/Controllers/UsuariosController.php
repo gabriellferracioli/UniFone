@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Foundation\Auth\User;
 
 class UsuariosController extends Controller
 {
@@ -24,6 +25,7 @@ class UsuariosController extends Controller
      */
     public function index()
     {
+        dd(auth()->user());
         $usuarios = DB::select('select id, Usuario_Usuario as usuario, Nome_Usuario as nome, Ramal_Usuario as ramal from usuarios');
         return view('menuusuario',compact('usuarios'));
     }
@@ -125,9 +127,6 @@ class UsuariosController extends Controller
     }
     public function cadusuario(){
         return view('cadusuario');
-    }
-    public function carregainfousu($id, Request $request){
-        return Usuarios::findOrFail($id);
     }
     public function AltUsuario(){
         return view('altusuario');

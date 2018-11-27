@@ -17,7 +17,7 @@ select.basic {
 <div class="col-md-9">
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
-              <li class="active"><a href="#settings" data-toggle="tab" aria-expanded="true">Cadastrar Usuário</a></li>
+              <li class="active"><a href="#settings" data-toggle="tab" aria-expanded="true">Alterar Usuário</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="settings">
@@ -50,6 +50,16 @@ select.basic {
                         <option value="Supervisor" >Supervisor</option>
                         <option value="Gestor"   >Gestor</option>
                     </select> 
+                  </div>
+                  <div class="form-group">
+                    <label for="inputidmovidesk" class="col-sm-2 control-label">Cod. Referëncia</label>
+                    <div class="col-sm-4">
+                      <input name="nome" type="name" class="form-control" id="inputidmovidesk" placeholder="" value="" maxlength=10 required>
+                    </div>
+                    <label for="inputtime" class="col-sm-1 control-label">Grupo</label>
+                    <div class="col-sm-4">
+                      <input name="nome" type="name" class="form-control" id="inputtime" placeholder="" value="" required>
+                    </div>
                   </div>
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">

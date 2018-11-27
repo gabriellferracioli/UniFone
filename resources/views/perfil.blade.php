@@ -46,6 +46,16 @@ select.basic {
                     </div>
                   </div>
                   <div class="form-group">
+                    <label for="inputidmovidesk" class="col-sm-2 control-label">Cod. Referëncia</label>
+                    <div class="col-sm-4">
+                      <input name="nome" type="name" class="form-control" id="inputidmovidesk" placeholder="" value="" maxlength=10 required>
+                    </div>
+                    <label for="inputtime" class="col-sm-1 control-label">Grupo</label>
+                    <div class="col-sm-4">
+                      <input name="nome" type="name" class="form-control" id="inputtime" placeholder="" value="" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <button type="submit" class="btn btn-warning">Alterar</button>
                     </div>

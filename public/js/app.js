@@ -36053,7 +36053,6 @@ if (window.location.href == "http://localhost:8000/usuarios") {
         }
         idusuario = s.substring(0, s.indexOf(","));
         idusuario = idusuario.trim(idusuario);
-        console.log('Oie');
         $.get("/api/carregainfousu/" + idusuario, function (data, status) {
             sessionStorage.setItem("Id", idusuario);
             sessionStorage.setItem("Nome", data.Nome_Usuario);

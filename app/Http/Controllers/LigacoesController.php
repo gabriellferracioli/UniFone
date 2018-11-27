@@ -6,6 +6,7 @@ use App\cliente;
 use App\ligacoes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\User;
 
 class LigacoesController extends Controller
 {
@@ -129,12 +130,16 @@ class LigacoesController extends Controller
     public function carregainfocli($id, Request $request){
         return cliente::findOrFail($id);
     }
+    public function carregainfousu($id, Request $request){
+        return User::findOrFail($id);
+    }
     public function AltLigacao(){
         return view('altligacao');
     }
     public function montaJson($infoligacao){
+        dd($infoligacao);
         date_default_timezone_set('America/Sao_Paulo');
-        $ticket =array(
+        $ticket = array(
             'type' => '1',
          'subject' => $infoligacao->assunto,
         'category' => 'Suporte',
@@ -143,22 +148,27 @@ class LigacoesController extends Controller
           'origin' => '9',
      'createdDate' => substr(now(),0),
            'owner' => array(
-                     'id' => '1607307413'
+                     'id' => auth()->user()->Idmovidesk_Usuario 
            ),
        'ownerTeam' => 'Desenvolvimento',
        'createdBy' => array(
-                     'id' => '1607307413'
+                     'id' => auth()->user()->Idmovidesk_Usuario
            ), 
-         'Clients' => array(
-                     'id' => '00006',
+         'clients' =>array(array(
+                     'id' => $infoligacao->ADM,
              'personType' => '2',
             'profileType' => '2'
-           ),
-         'Actions' => array(
+           )),
+         'Actions' =>array(array(
                    'type' => '1' ,
-            'description' => $infoligacao->observacoes
-           ),
+            'description' => $infoligacao->observacoes,
+                 'origin' => '9',
+              'createdBy' => array(
+                'id' => auth()->user()->Idmovidesk_Usuario
+              ),
+           )),
         );
+
         $ticketjson = json_encode($ticket);
         // dd($ticketjson);
 
@@ -170,13 +180,13 @@ class LigacoesController extends Controller
         
         curl_setopt($ch, CURLOPT_POST, 1);
         
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $ticketjson);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $ticket);
         
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json')); 
         
         curl_exec($ch);
         
         $resposta = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        dd($resposta);
+        // dd($resposta);
     }
 }
