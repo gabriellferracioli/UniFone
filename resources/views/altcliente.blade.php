@@ -91,7 +91,6 @@ select.basic {
                   <div class="form-group">
                     <div class="col-sm-offset-2 col-sm-10">
                       <button type="submit" class="btn btn-warning">Alterar</button>
-                      <button type="submit" class="btn btn-danger">Excluir</button>
                     </div>
                   </div>
                   </form>

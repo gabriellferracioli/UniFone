@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Crypt;
 class PerfilController extends Controller
 {
     public function perfil(){
-        $usuario = DB::select('select id, nome_usuario  as nome, Usuario_Usuario as usuario, password as senha, Ramal_Usuario as ramal from usuarios where id ='.auth()->user()->id);
+        $usuario = DB::select('select id, nome_usuario  as nome, Usuario_Usuario as usuario, password as senha, Ramal_Usuario as ramal, Idmovidesk_Usuario as idmovidesk, Time_Usuarios as time from usuarios where id ='.auth()->user()->id);
         $usuario = $usuario[0];
         return view('perfil', compact('usuario'));
     }

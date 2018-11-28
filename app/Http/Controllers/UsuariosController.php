@@ -25,7 +25,6 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        dd(auth()->user());
         $usuarios = DB::select('select id, Usuario_Usuario as usuario, Nome_Usuario as nome, Ramal_Usuario as ramal from usuarios');
         return view('menuusuario',compact('usuarios'));
     }
@@ -58,6 +57,8 @@ class UsuariosController extends Controller
             'Cargo_usuario' => $request->cargo,
             'Usuario_Usuario' => $request->usuario,
             'password'=> Hash::make($request->senha),
+            'Idmovidesk_Usuario' => $request->idmovidesk,
+            'Time_Usuarios' => $request->time,
             'ativo_usuario' => 1,
             'created_at' => now(),
             'updated_at' => null,     
@@ -102,7 +103,6 @@ class UsuariosController extends Controller
         }else {
             $senha = $request->senha;
         }
-        
         DB::table('usuarios')
         ->where('id', $request->idusuario)
         ->update(['Nome_Usuario' => $request->nome,
@@ -110,6 +110,8 @@ class UsuariosController extends Controller
                   'password' => $senha,
                   'Ramal_Usuario' => $request->ramal,
                   'Cargo_Usuario' => $request->cargo,
+                  'Idmovidesk_Usuario' => $request->idmovidesk,
+                  'Time_Usuarios' => $request->time,
                   'updated_at' => now(),]);
     return redirect()->route('menuusuarios');
     }

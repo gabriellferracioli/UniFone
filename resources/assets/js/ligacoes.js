@@ -110,6 +110,8 @@ $("tr").click(function () {
         sessionStorage.setItem("Cargo", data.Cargo_Usuario);
         sessionStorage.setItem("Usuario", data.Usuario_Usuario);
         sessionStorage.setItem("Senha", data.password);
+        sessionStorage.setItem("Idmovidesk", data.Idmovidesk_Usuario);
+        sessionStorage.setItem("Time", data.Time_Usuarios);
         window.location="/altusuario"; 
     });    
 });
@@ -123,4 +125,6 @@ if (window.location.href == "http://localhost:8000/altusuario"){
     $('#cbcargo').val(""+sessionStorage.Cargo);
     $('#inputusuario').val(""+sessionStorage.Usuario);
     $('#inputsenha').val(""+sessionStorage.Senha);
+    $('#inputidmovidesk').val(""+sessionStorage.Idmovidesk);
+    $('#inputtime').val(""+sessionStorage.Time);
 }
