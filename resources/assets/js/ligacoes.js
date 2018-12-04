@@ -38,7 +38,7 @@ $("tr").click(function () {
 
 if (window.location.href == "http://localhost:8000/altligacoes"){
     $('#idLigacao').val(""+sessionStorage.idligacao);
-    $('#inputADM').val(""+sessionStorage.idCliente);
+    $('#inputADM').val(parseInt(sessionStorage.idCliente));
     $('#inputassunto').val(""+sessionStorage.Assunto);
     $('#cbUrgencia').val(""+sessionStorage.Urgencia);
     $('#inputObservacoes').val(""+sessionStorage.Observacoes);
@@ -77,7 +77,7 @@ $("tr").click(function () {
 
 if (window.location.href == "http://localhost:8000/altcliente"){
     $('#idcliente').val(""+sessionStorage.Id);
-    $('#inputcnpj').val(""+sessionStorage.Cnpj);
+    $('#inputcnpj').val(parseInt(sessionStorage.Cnpj));
     $('#inputnome').val(""+sessionStorage.Nome);
     $('#inputrazao').val(""+sessionStorage.Razao);
     $('#inputmunicipio').val(""+sessionStorage.Municipio);

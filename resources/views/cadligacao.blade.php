@@ -26,7 +26,7 @@ select.basic {
                     <label for="inputADM" class="col-sm-2 control-label">ADM</label>
                     <div class='row'>
                         <div class="col-sm-2">
-                        <input name="ADM" type="nome" class="form-control" id="inputADM" placeholder="" value="" maxlength='5' required >        
+                        <input name="ADM" type="numer" class="form-control" id="inputADM" placeholder="" value="" maxlength='5' required >        
                         </div>
                         <div>
                         <a id="btnADM" class="btn btn-success" >Buscar</a>

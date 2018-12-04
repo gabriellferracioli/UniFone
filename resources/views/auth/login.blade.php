@@ -29,7 +29,7 @@
 
                 <div class="col-md-6">
                   <input id="identity" type="identity" class="form-control" name="identity"
-                         value="{{ old('identity') }}" autofocus>
+                         value="{{ old('identity') }}" autofocus required>
 
                   @if ($errors->has('identity'))
                     <span class="help-block">
@@ -42,7 +42,7 @@
                 <label for="password" class="col-md-4 control-label">Senha</label>
 
                 <div class="col-md-6">
-                  <input id="password" type="password" class="form-control" name="password">
+                  <input id="password" type="password" class="form-control" name="password" required>
 
                   @if ($errors->has('password'))
                     <span class="help-block">

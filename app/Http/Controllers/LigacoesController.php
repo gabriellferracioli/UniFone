@@ -155,7 +155,7 @@ class LigacoesController extends Controller
            'owner' => array(
                      'id' => auth()->user()->Idmovidesk_Usuario 
            ),
-       'ownerTeam' => 'Desenvolvimento',
+       'ownerTeam' => auth()->user()->Time_Usuarios,
        'createdBy' => array(
                      'id' => auth()->user()->Idmovidesk_Usuario
            ), 

@@ -21,7 +21,7 @@ class NivelAcesso
                 return redirect()->route('home');
             }           
         }else if($nivel == 'usuario'){
-            if((Auth()->user()->Cargo_Usuario == 'Atendente') or (Auth()->user()->Cargo_Usuario == 'Supervisor')) {
+            if((Auth()->user()->Cargo_Usuario == 'Atendente')) {
                 return redirect()->route('home');
             }     
         }

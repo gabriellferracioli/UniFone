@@ -36,8 +36,8 @@ class HomeController extends Controller
         $ultimasligacoes = DB::select('select lig.id_cliente adm, cli.nome_cliente cnome, count(lig.id_cliente)
         from ligacoes lig, clientes cli
         where lig.id_cliente = cli.id_cliente
-        group by lig.id_cliente
-        order by count(lig.id_cliente) desc
+        group by lig.id_ligacao
+        order by lig.id_ligacao desc
         limit 5;');
 
         return view('home', compact('clientesligacoes','ultimasligacoes'));

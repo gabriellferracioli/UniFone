@@ -25,7 +25,7 @@ select.basic {
                   <div class="form-group">
                         <label for="inputcnpj" class="col-sm-2 control-label">CNPJ</label>
                         <div class="col-sm-4">
-                            <input name="cnpj" type="name" class="form-control" id="inputcnpj" maxlength='18' required>
+                            <input name="cnpj" type="number" class="form-control" id="inputcnpj" min="0" max="999999999999999999" required>
                         </div>
                      </div>
                   <div class="form-group">

@@ -42,12 +42,10 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        // $idcliente = DB::select('select id_cliente from clientes order by id_cliente desc limit 1');
-        // $id = $idcliente[0]; 
-        // dd($request->cnpj);
-        // intval($id->id_cliente)
+        $idcliente = DB::select('select id_cliente from clientes order by id_cliente desc limit 1');
+        $id = $idcliente[0]; 
         DB::table('clientes')->insert([
-            'id_cliente' =>  6,
+            'id_cliente' =>  intval($id->id_cliente) + 1,
             'CNPJ_cliente'=> $request->cnpj,
             'Nome_cliente'=> $request->nome,
             'Razaosocial_cliente' => $request->razaosocial,
